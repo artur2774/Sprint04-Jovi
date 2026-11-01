@@ -1,102 +1,180 @@
-<!--
-## DESENVOLVIDO POR INOVA X:
-Integrantes:
-Bruno Araujo Castro (RM: 572723)
-João Pedro De Souza (RM: 571437)
-Arthur Germano Pinheiro (RM: 574042)
-Artur Novazzi (RM: 572624)
-Arthur Nepomuceno (RM: 572626)
--->
+# Jovi Vision — Sprint 4
 
-# 📸 Jovi Vision Core
+Projeto acadêmico da equipe Smartech para as disciplinas
+Front-end Design e Web Development.
 
-> Uma experiência inteligente pensada para transformar a forma como estudantes registram, organizam e utilizam informações visuais.
+Evolução do projeto da Sprint 3, mantendo a proposta Jovi Vision
+e adicionando nova interface, navegação com rotas, login demonstrativo
+e integração com API.
 
-[![React](https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=black)](https://react.dev/)
-[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-[![HTML5](https://img.shields.io/badge/HTML5-E34C26?style=flat&logo=html5&logoColor=white)](https://html.spec.whatwg.org/)
-[![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white)](https://www.w3.org/Style/CSS/)
-[![Responsive Design](https://img.shields.io/badge/Responsive-Mobile%20First-brightgreen?style=flat)](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Responsive_Design)
+## Links
 
----
+- Site: https://sprint04-jovi.vercel.app/
+- Repositório: https://github.com/artur2774/Sprint04-Jovi
 
-## 🎯 Visão Geral
+## Tecnologias e dependências
 
-O **Jovi Vision Core** é um projeto acadêmico desenvolvido com o objetivo de apresentar uma solução de câmera inteligente voltada especialmente para estudantes.
+- React: construção da interface com componentes e props.
+- Vite: ambiente de desenvolvimento e build.
+- Tailwind CSS: estilização e responsividade.
+- React Router: rotas públicas e privadas.
+- MockAPI: armazenamento remoto das avaliações.
+- ESLint: análise estática do código.
+- Vercel: publicação da aplicação.
 
-A proposta é explorar uma experiência que facilite o registro de conteúdos acadêmicos, documentos, apresentações e outros elementos visuais presentes na rotina estudantil.
+As dependências e suas versões estão no package.json.
+O package-lock.json registra as versões resolvidas.
 
-Durante a **Sprint 3**, o projeto passou por uma importante evolução técnica: a aplicação foi **reestruturada utilizando React**, substituindo parte da estrutura anteriormente desenvolvida apenas com HTML, CSS e JavaScript.
+## Requisitos para execução
 
-Essa reformulação permitiu tornar o código mais **modular, organizado, reutilizável e escalável**, utilizando uma arquitetura baseada em componentes.
+- Node.js 22.12 ou superior.
+- npm.
+- Acesso à internet para instalar dependências e consumir a API.
 
----
+## Instalação e execução
 
-# 🚀 Evolução na Sprint 2
+```bash
+git clone https://github.com/artur2774/Sprint04-Jovi.git
+cd Sprint04-Jovi
+npm ci
+npm run dev
+```
 
-Na primeira versão do projeto, a aplicação utilizava uma estrutura tradicional de desenvolvimento frontend baseada principalmente em:
+Abra o endereço informado no terminal pelo Vite.
 
-- HTML
-- CSS
-- JavaScript Vanilla
+Também é possível extrair o ZIP da entrega, abrir a pasta que contém
+o package.json e executar npm ci e npm run dev.
 
-Na **Sprint 3**, iniciamos a migração e reorganização da aplicação utilizando **React**, buscando melhorar principalmente:
+## Comandos disponíveis
 
-- ♻️ Reutilização de componentes
-- 🧩 Separação de responsabilidades
-- 📁 Organização da estrutura do projeto
-- 🛠️ Manutenção do código
-- 📈 Escalabilidade da aplicação
-- ⚡ Desenvolvimento de novas funcionalidades
+```bash
+npm run dev      # Inicia o ambiente de desenvolvimento
+npm run build    # Gera a versão de produção em dist
+npm run preview  # Permite visualizar o build localmente
+npm run lint     # Executa a análise estática
+```
 
-A utilização de componentes permite que partes da interface, como **Header, seções, cards, botões e Footer**, possam ser desenvolvidas separadamente e reutilizadas sempre que necessário.
+Execute npm run build antes de npm run preview.
 
----
+## Funcionalidades
 
-# ✨ Funcionalidades
+- Apresentação da proposta Jovi Vision.
+- Seções de problemas, funcionalidades e aplicações.
+- Navegação responsiva com menu para celular.
+- Cadastro e consulta de avaliações pela API.
+- Cálculo da nota média e do total de avaliações.
+- Mensagens de carregamento, sucesso e erro.
+- Login demonstrativo e painel com rota protegida.
+- Encerramento da sessão.
 
-- 📸 **Apresentação do conceito Jovi Vision**
-- 🔐 **Interface de autenticação**
-- 📋 **Formulário de avaliação**
-- 📱 **Layout responsivo**
-- 🎨 **Interface moderna e intuitiva**
-- 🚀 **Protótipo visual da câmera inteligente**
-- 🔍 **Apresentação dos casos de uso**
-- 📊 **Cards com informações e estatísticas**
-- 🧩 **Interface estruturada através de componentes React**
+Os recursos de câmera e inteligência artificial apresentados são
+conceituais. O site não executa captura ou processamento de imagens.
 
----
+## Rotas
 
-# ⚛️ Arquitetura em React
+| Rota | Acesso | Conteúdo |
+|---|---|---|
+| / | Público | Apresentação e avaliações |
+| /login | Público | Login demonstrativo |
+| /painel | Privado na interface | Painel de avaliações |
 
-Com a reformulação da Sprint 3, a interface passou a ser dividida em componentes independentes.
+Usuários sem sessão são redirecionados de /painel para /login.
 
-Exemplo de organização:
+## Acesso de teste
+
+- E-mail: demo@jovi.com
+- Senha: Jovi123!
+
+O login é uma simulação acadêmica executada no navegador.
+A sessão é mantida no sessionStorage.
+
+A proteção das rotas controla a navegação da interface.
+Ela não representa autenticação de backend nem restringe
+o acesso direto à API pública.
+
+## Integração com API
+
+Endpoint:
+
+https://6ae77f7556b2ee1e544070c5.mockapi.io/api/v1/evaluations
+
+Operações utilizadas:
+
+- GET: consulta as avaliações ao carregar a aplicação.
+- POST: cadastra uma avaliação com nota, comentário e data.
+
+Campos de cada registro:
+
+| Campo | Descrição |
+|---|---|
+| id | Identificador gerado pela API |
+| score | Nota de 1 a 5 |
+| comment | Comentário de até 500 caracteres |
+| date | Data do cadastro |
+
+A integração está no hook personalizado src/hooks/useEvaluations.js,
+utilizando fetch, useState e useEffect.
+
+Os dados consultados alimentam a seção de avaliações e o painel.
+A média e o total são calculados no front-end.
+
+O serviço é externo e público. Utilize apenas dados de demonstração.
+Não é necessário executar um backend local, criar uma conta MockAPI
+ou configurar uma chave para testar o endpoint existente.
+
+Caso o endpoint seja substituído, atualize a constante API no hook.
+
+As avaliações antigas do localStorage não são migradas automaticamente.
+
+## Organização principal
 
 ```text
-Jovi-Vision-Core/
-│
-├── public/
-│
-├── src/
-│   │
-│   ├── assets/
-│   │   ├── images/
-│   │   └── styles/
-│   │
-│   ├── components/
-│   │   ├── Header/
-│   │   ├── Hero/
-│   │   ├── Problems/
-│   │   ├── Features/
-│   │   ├── Statistics/
-│   │   ├── UseCases/
-│   │   └── Footer/
-│   │
-│   ├── pages/
-│   │
-│   ├── App.jsx
-│   └── main.jsx
-│
-├── package.json
-└── README.md
+src/
+├── assets/
+├── components/
+│   ├── Header.jsx
+│   ├── Hero.jsx
+│   ├── Problems.jsx
+│   ├── Features.jsx
+│   ├── EvaluationSection.jsx
+│   ├── Uses.jsx
+│   ├── Footer.jsx
+│   └── SectionTitle.jsx
+├── hooks/
+│   └── useEvaluations.js
+├── pages/
+│   ├── Login.jsx
+│   └── Dashboard.jsx
+├── App.jsx
+├── main.jsx
+└── index.css
+```
+
+## Evolução em relação à Sprint 3
+
+- Estilização com Tailwind CSS.
+- Atualização visual dos componentes.
+- Componente de título reutilizável com props.
+- Menu adaptado para telas menores.
+- Rotas com React Router.
+- Login demonstrativo e painel privado na interface.
+- Hook personalizado para gerenciamento das avaliações.
+- Substituição da persistência local por consumo de API.
+- Tratamento de carregamento e falhas nas requisições.
+- Publicação na Vercel.
+
+## Publicação
+
+O projeto utiliza Vite, comando de build npm run build e diretório
+de saída dist.
+
+O arquivo vercel.json configura o retorno de index.html para as rotas
+da aplicação, permitindo acesso direto a /login e /painel.
+
+## Integrantes — Smartech
+
+- Artur de Novazzi Maia — RM 572624
+- Arthur Pinheiro Germano — RM 574042
+- Bruno Araújo Castro — RM 572723
+- João Pedro de Souza — RM 571437
+- Arthur Nepomuceno Dias Gomes — RM 572626
