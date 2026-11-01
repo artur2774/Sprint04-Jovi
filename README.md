@@ -66,9 +66,22 @@ Execute npm run build antes de npm run preview.
 - Mensagens de carregamento, sucesso e erro.
 - Login demonstrativo e painel com rota protegida.
 - Encerramento da sessão.
+- Protótipo interativo inspirado nas telas de câmera e no pitch Jovi.
+- Fluxo demonstrativo em cinco etapas: câmera, detecção de contexto,
+  sugestão de pasta, processamento e resultado.
+- Edição da pasta sugerida.
+- Visualização de documento e resumo de exemplo.
+- Compartilhamento do texto pelo navegador, com alternativa de cópia.
+- Grade de enquadramento e reinício da demonstração.
 
-Os recursos de câmera e inteligência artificial apresentados são
-conceituais. O site não executa captura ou processamento de imagens.
+O protótipo utiliza conteúdo fixo para simular captura, reconhecimento
+de contexto, OCR, correção de perspectiva, organização, PDF e resumo.
+Ele não acessa a câmera, não gera um arquivo PDF real e não executa IA
+nem integrações com Gemini, Google Drive ou Google Fotos.
+
+O compartilhamento ou a cópia do texto de exemplo utiliza recursos
+reais do navegador. O cadastro e a consulta das avaliações utilizam
+a API do MockAPI.
 
 ## Rotas
 
@@ -139,6 +152,7 @@ src/
 │   ├── EvaluationSection.jsx
 │   ├── Uses.jsx
 │   ├── Footer.jsx
+│   ├── CameraPreview.jsx
 │   └── SectionTitle.jsx
 ├── hooks/
 │   └── useEvaluations.js
