@@ -1,115 +1,55 @@
+const links = [
+  { titulo: 'O problema', destino: '#problema' },
+  { titulo: 'Funcionalidades', destino: '#funcionalidades' },
+  { titulo: 'Aplicações', destino: '#usos' },
+  { titulo: 'Avaliar projeto', destino: '#avaliacao' },
+];
+
 export default function Footer() {
-  const smoothScrollTo = (targetId, duration = 1000) => {
-    const target = document.getElementById(targetId);
-    if (!target) return;
-
-    const headerOffset = 80;
-    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerOffset;
-    const startPosition = window.pageYOffset;
-    const distance = targetPosition - startPosition;
-    let startTime = null;
-
-    const easeInOutCubic = (t) => 
-      t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-
-    const animation = (currentTime) => {
-      if (startTime === null) startTime = currentTime;
-      const timeElapsed = currentTime - startTime;
-      const progress = Math.min(timeElapsed / duration, 1);
-
-      window.scrollTo(0, startPosition + distance * easeInOutCubic(progress));
-
-      if (timeElapsed < duration) {
-        requestAnimationFrame(animation);
-      }
-    };
-
-    requestAnimationFrame(animation);
-  };
-
-  const handleClick = (e, targetId) => {
-    e.preventDefault();
-    smoothScrollTo(targetId);
-  };
-
   return (
-    <footer>
-      <div className="footer-conteudo">
-        <div className="footer-marca">
-          <div className="logo">Jovi<span>Vision</span></div>
-          <p style={{ color: 'rgba(255, 255, 255, 0.5)', fontSize: '13px', marginTop: '12px', maxWidth: '280px' }}>
-            Soluções inteligentes de imagem acadêmica desenvolvidas para transformar o estudo de estudantes.
-          </p>
+    <footer className="bg-[#071a3e] px-5 py-12 text-white md:px-8">
+      <div className="mx-auto max-w-6xl">
+        <div className="grid gap-10 md:grid-cols-2">
+          <div>
+            <a
+              href="#"
+              className="text-xl font-bold tracking-tight text-white"
+            >
+              Jovi<span className="text-blue-300">Vision</span>
+            </a>
+
+            <p className="mt-4 max-w-sm text-sm leading-relaxed text-blue-100/80">
+              Uma proposta de experiência de câmera pensada para
+              a rotina de estudantes.
+            </p>
+
+            <p className="mt-3 text-xs text-blue-200">
+              Projeto acadêmico · Smartech
+            </p>
+          </div>
+
+          <div className="md:justify-self-end">
+            <h2 className="text-sm font-semibold">Explore o projeto</h2>
+
+            <ul className="mt-4 grid gap-3 sm:grid-cols-2 sm:gap-x-8">
+              {links.map((link) => (
+                <li key={link.destino}>
+                  <a
+                    href={link.destino}
+                    className="inline-block py-1 text-sm text-blue-100/80 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-300"
+                  >
+                    {link.titulo}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
 
-        <div className="footer-coluna">
-          <h5>Produto</h5>
-          <ul>
-            <li>
-              <a href="#funcionalidades" onClick={(e) => handleClick(e, 'funcionalidades')}>
-                Funcionalidades
-              </a>
-            </li>
-            <li>
-              <a href="#usos" onClick={(e) => handleClick(e, 'usos')}>
-                Casos de Uso
-              </a>
-            </li>
-            <li>
-              <a href="#problema" onClick={(e) => handleClick(e, 'problema')}>
-                O Problema
-              </a>
-            </li>
-          </ul>
+        <div className="mt-10 flex flex-col gap-3 border-t border-white/15 pt-6 text-xs text-blue-100/80 sm:flex-row sm:justify-between">
+          <p>© {new Date().getFullYear()} Jovi Vision.</p>
+          <p>Desenvolvido para Front-end Design e Web Development.</p>
         </div>
-
-        <div className="footer-coluna">
-          <h5>Câmera</h5>
-          <ul>
-            <li>
-              <a href="#funcionalidades" onClick={(e) => handleClick(e, 'funcionalidades')}>
-                Sensor Principal
-              </a>
-            </li>
-            <li>
-              <a href="#funcionalidades" onClick={(e) => handleClick(e, 'funcionalidades')}>
-                IA e Processamento
-              </a>
-            </li>
-            <li>
-              <a href="#funcionalidades" onClick={(e) => handleClick(e, 'funcionalidades')}>
-                Câmera Frontal
-              </a>
-            </li>
-            <li>
-              <a href="#funcionalidades" onClick={(e) => handleClick(e, 'funcionalidades')}>
-                Modos Especiais
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        <div className="footer-coluna">
-          <h5>Projeto</h5>
-          <ul>
-            <li>
-              <a href="#problema" onClick={(e) => handleClick(e, 'problema')}>
-                Pesquisa
-              </a>
-            </li>
-            <li>
-              <a href="#avaliacao" onClick={(e) => handleClick(e, 'avaliacao')}>
-                Contato
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <div className="footer-rodape">
-        <p style={{fontSize: '12px', color: 'rgba(255, 255, 255, 0.4)'}}>
-          © {new Date().getFullYear()} Jovi Vision. Todos os direitos reservados.
-        </p>
       </div>
     </footer>
   );

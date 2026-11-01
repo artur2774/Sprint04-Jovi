@@ -1,36 +1,77 @@
+import SectionTitle from './SectionTitle';
+
+const aplicacoes = [
+  {
+    etiqueta: 'Aprendizado',
+    titulo: 'Estudo e pesquisa',
+    descricao:
+      'Registros visuais para acompanhar o conteúdo e consultar depois.',
+    itens: [
+      'Quadros e apresentações em sala de aula',
+      'Páginas de livros e materiais de estudo',
+      'Experimentos e atividades de laboratório',
+      'Anotações visuais para revisão',
+    ],
+  },
+  {
+    etiqueta: 'Conexões',
+    titulo: 'Vida social e criação',
+    descricao:
+      'Uma proposta que também acompanha os momentos fora da sala.',
+    itens: [
+      'Videochamadas e encontros em grupo',
+      'Retratos e memórias com amigos',
+      'Registros em diferentes condições de luz',
+      'Vídeos e apresentações criativas',
+    ],
+  },
+];
+
 export default function Uses() {
   return (
-    <section className="secao-usos" id="usos">
-      <div className="secao-titulo">
-        <span className="label">Casos de uso</span>
-        <h2>Para estudar. Para conectar. Para criar.</h2>
-        <p>CamFocus foi projetada para dois universos que se complementam: o acadêmico e o social.</p>
-      </div>
+    <section id="usos" className="bg-white px-5 py-16 md:px-8 md:py-24">
+      <div className="mx-auto max-w-6xl">
+        <SectionTitle
+          etiqueta="Aplicações"
+          titulo="Para estudar. Para conectar. Para criar."
+          descricao="O conceito Jovi Vision aproxima dois universos da rotina estudantil: o acadêmico e o social."
+        />
 
-      <div className="usos-conteudo">
-        <article className="uso-bloco">
-          <div className="uso-icone"></div>
-          <h3>Estudo e Pesquisa</h3>
-          <p>Do quadro da sala ao experimento de laboratório, nenhuma informação se perde por culpa da câmera.</p>
-          <ul className="uso-lista">
-            <li>Fotografe quadros com nitidez total, mesmo de longe</li>
-            <li>Digitalize livros e provas com correção automática de perspectiva</li>
-            <li>Registre experimentos com zoom óptico real</li>
-            <li>Faça anotações visuais em ambientes com pouca luz</li>
-          </ul>
-        </article>
+        <div className="grid gap-6 md:grid-cols-2">
+          {aplicacoes.map((aplicacao) => (
+            <article
+              key={aplicacao.titulo}
+              className="rounded-3xl border border-slate-200 bg-[#f5f7fa] p-7 sm:p-9"
+            >
+              <span className="text-xs font-semibold uppercase tracking-widest text-blue-600">
+                {aplicacao.etiqueta}
+              </span>
 
-        <article className="uso-bloco">
-          <div className="uso-icone"></div>
-          <h3>Vida Social</h3>
-          <p>A vida de estudante é feita de conexões e memórias. CamFocus eleva cada registro a um novo patamar.</p>
-          <ul className="uso-lista">
-            <li>Câmera frontal HD para videochamadas e conteúdo de qualidade</li>
-            <li>Retratos naturais com desfoque de fundo por IA</li>
-            <li>Capturas noturnas sem granulação excessiva</li>
-            <li>Vídeo estabilizado para reels e apresentações criativas</li>
-          </ul>
-        </article>
+              <h3 className="mt-3 text-2xl font-semibold tracking-tight text-[#071a3e]">
+                {aplicacao.titulo}
+              </h3>
+
+              <p className="mt-3 text-sm leading-relaxed text-slate-600">
+                {aplicacao.descricao}
+              </p>
+
+              <ul className="mt-6 space-y-4">
+                {aplicacao.itens.map((item) => (
+                  <li
+                    key={item}
+                    className="flex items-start gap-3 text-sm leading-relaxed text-slate-700"
+                  >
+                    <span
+                      aria-hidden="true"
+                      className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-600"
+                    />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );

@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { Link, Navigate, Route, Routes } from 'react-router';
+
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Problems from './components/Problems';
@@ -6,49 +8,120 @@ import Features from './components/Features';
 import EvaluationSection from './components/EvaluationSection';
 import Uses from './components/Uses';
 import Footer from './components/Footer';
-import './index.css';
+
+import Login from './pages/Login';
+import Dashboard from './pages/Dashboard';
+import useEvaluations from './hooks/useEvaluations';
 
 export default function App() {
-  const [evaluations, setEvaluations] = useState(() => {
-    const saved = localStorage.getItem('jovi_evaluations');
-    return saved ? JSON.parse(saved) : [];
-  });
+  const [autenticado, setAutenticado] = useState(
+    () => sessionStorage.getItem('jovi_demo_session') === 'ativa'
+  );
 
-  const stats = {
-    average: evaluations.length
-      ? Math.round((evaluations.reduce((acc, curr) => acc + curr.score, 0) / evaluations.length) * 10) / 10
-      : 0,
-    total: evaluations.length,
-  };
+  const {
+    evaluations,
+    stats,
+    addEvaluation,
+    loading,
+    error,
+  } = useEvaluations();
 
-  const handleAddEvaluation = (score, comment) => {
-    const newEval = {
-      id: Math.floor(Math.random() * 10000),
-      score: Math.min(Math.max(score, 1), 5),
-      comment,
-      date: new Date().toLocaleDateString('pt-BR'),
-    };
+  function entrar() {
+    sessionStorage.setItem('jovi_demo_session', 'ativa');
+    setAutenticado(true);
+  }
 
-    const updated = [newEval, ...evaluations];
-    setEvaluations(updated);
-    localStorage.setItem('jovi_evaluations', JSON.stringify(updated));
-  };
+  function sair() {
+    sessionStorage.removeItem('jovi_demo_session');
+    setAutenticado(false);
+  }
 
   return (
-    <div className="app-container">
-      <Header/>
-      <main>
-        <Hero/>
-        <Problems/>
-        <Features/>
-        <EvaluationSection 
-          stats={stats} 
-          evaluations={evaluations} 
-          onAddEvaluation={handleAddEvaluation} 
+    <>
+      {loading && (
+        <p
+          role="status"
+          className="bg-blue-50 px-5 py-3 text-center text-sm text-blue-800"
+        >
+          Carregando avaliações...
+        </p>
+      )}
+
+      {error && (
+        <p
+          role="alert"
+          className="bg-red-50 px-5 py-3 text-center text-sm text-red-800"
+        >
+          {error} Atualize a página para tentar novamente.
+        </p>
+      )}
+
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <Header />
+
+              <main>
+                <Hero />
+                <Problems />
+                <Features />
+
+                <EvaluationSection
+                  stats={stats}
+                  evaluations={evaluations}
+                  onAddEvaluation={addEvaluation}
+                />
+
+                <Uses />
+
+                <div className="bg-white px-5 pb-10 text-center">
+                  <Link
+                    to={autenticado ? '/painel' : '/login'}
+                    className="inline-block rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold text-white hover:bg-blue-700"
+                  >
+                    Acessar painel
+                  </Link>
+                </div>
+              </main>
+
+              <Footer />
+            </>
+          }
         />
-        <Uses/>
-      </main>
-      <Footer/>
-    </div>
+
+        <Route
+          path="/login"
+          element={
+            autenticado ? (
+              <Navigate to="/painel" replace />
+            ) : (
+              <Login onLogin={entrar} />
+            )
+          }
+        />
+
+        <Route
+          path="/painel"
+          element={
+            autenticado ? (
+              <Dashboard
+                stats={stats}
+                evaluations={evaluations}
+                onLogout={sair}
+              />
+            ) : (
+              <Navigate to="/login" replace />
+            )
+          }
+        />
+
+        <Route
+          path="*"
+          element={<Navigate to="/" replace />}
+        />
+      </Routes>
+    </>
   );
 }

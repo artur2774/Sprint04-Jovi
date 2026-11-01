@@ -1,29 +1,56 @@
-const problemList = [
-  { title: "Fotos de quadro ilegíveis", desc: "A resolução insuficiente e o foco lento tornam impossível capturar anotações do quadro com clareza de leitura." },
-  { title: "Baixo desempenho com pouca luz", desc: "Salas com iluminação irregular resultam em fotos granuladas que não servem para revisão posterior." },
-  { title: "Digitalização de documentos precária", desc: "Fotografar livros e provas gera imagens distorcidas e com reflexo, comprometendo o estudo digital." },
-  { title: "Câmera frontal inadequada", desc: "Videochamadas de estudo e apresentações remotas sofrem com qualidade de imagem abaixo do esperado." },
-  { title: "Zoom que destrói o detalhe", desc: "Ampliar fórmulas ou experimentos em aula resulta em imagens pixeladas sem uso prático para revisão." },
-  { title: "Cor e contraste inconsistentes", desc: "Gráficos e mapas conceituais perdem informação crítica quando fotografados com câmeras de baixo padrão." }
+import SectionTitle from './SectionTitle';
+
+const problemas = [
+  {
+    numero: '01',
+    titulo: 'Conteúdo difícil de ler',
+    descricao:
+      'Fotos de quadros e apresentações podem perder detalhes, dificultando a consulta na hora de estudar.',
+  },
+  {
+    numero: '02',
+    titulo: 'Luz nem sempre favorável',
+    descricao:
+      'Ambientes com pouca iluminação ou reflexos tornam o registro de informações mais difícil.',
+  },
+  {
+    numero: '03',
+    titulo: 'Registros pouco práticos',
+    descricao:
+      'Ajustar a câmera e repetir fotos interrompe a atenção que poderia estar no conteúdo da aula.',
+  },
 ];
 
 export default function Problems() {
   return (
-    <section className="secao-problema" id="problema">
-      <div className="secao-titulo">
-        <span className="label">A dor identificada</span>
-        <h2>Câmeras comuns falham onde estudantes mais precisam.</h2>
-        <p>A Jovi identificou que os smartphones atuais não atendem às necessidades reais do dia a dia acadêmico.</p>
-      </div>
+    <section id="problema" className="bg-white px-5 py-16 md:px-8 md:py-24">
+      <div className="mx-auto max-w-6xl">
+        <SectionTitle
+          etiqueta="O desafio"
+          titulo="Sua atenção merece ficar no que importa."
+          descricao="Registrar o conteúdo deveria ajudar no aprendizado. Estes são alguns dos desafios que orientam a proposta Jovi Vision."
+        />
 
-      <div className="grade-cards">
-        {problemList.map((item, index) => (
-          <article className="card" key={index}>
-            <div className="card-icone"></div>
-            <h3>{item.title}</h3>
-            <p>{item.desc}</p>
-          </article>
-        ))}
+        <div className="grid gap-5 md:grid-cols-3">
+          {problemas.map((problema) => (
+            <article
+              key={problema.numero}
+              className="rounded-3xl border border-slate-200 bg-[#f5f7fa] p-7"
+            >
+              <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 text-sm font-semibold text-blue-700">
+                {problema.numero}
+              </span>
+
+              <h3 className="mt-6 text-xl font-semibold tracking-tight text-[#071a3e]">
+                {problema.titulo}
+              </h3>
+
+              <p className="mt-3 text-sm leading-relaxed text-slate-600">
+                {problema.descricao}
+              </p>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );
