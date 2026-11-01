@@ -3,32 +3,35 @@ import SectionTitle from './SectionTitle';
 const problemas = [
   {
     numero: '01',
-    titulo: 'Conteúdo difícil de ler',
+    titulo: 'Tudo misturado na galeria',
     descricao:
-      'Fotos de quadros e apresentações podem perder detalhes, dificultando a consulta na hora de estudar.',
+      'Fotos da aula dividem espaço com capturas de tela e registros pessoais. O conteúdo está salvo, mas nem sempre está organizado.',
   },
   {
     numero: '02',
-    titulo: 'Luz nem sempre favorável',
+    titulo: 'Encontrar vira uma tarefa',
     descricao:
-      'Ambientes com pouca iluminação ou reflexos tornam o registro de informações mais difícil.',
+      'Na hora de estudar, localizar aquele quadro ou slide exige percorrer imagens e tentar lembrar quando a foto foi tirada.',
   },
   {
     numero: '03',
-    titulo: 'Registros pouco práticos',
+    titulo: 'Registrar não basta',
     descricao:
-      'Ajustar a câmera e repetir fotos interrompe a atenção que poderia estar no conteúdo da aula.',
+      'Depois da captura, ainda é preciso organizar, reler e separar os pontos importantes para revisar o conteúdo.',
   },
 ];
 
 export default function Problems() {
   return (
-    <section id="problema" className="bg-white px-5 py-16 md:px-8 md:py-24">
+    <section
+      id="problema"
+      className="bg-white px-5 py-16 md:px-8 md:py-24"
+    >
       <div className="mx-auto max-w-6xl">
         <SectionTitle
-          etiqueta="O desafio"
-          titulo="Sua atenção merece ficar no que importa."
-          descricao="Registrar o conteúdo deveria ajudar no aprendizado. Estes são alguns dos desafios que orientam a proposta Jovi Vision."
+          etiqueta="Parece familiar?"
+          titulo="A foto está salva. Mas onde?"
+          descricao="O desafio começa depois do clique: transformar uma galeria cheia em conteúdo fácil de encontrar e revisar."
         />
 
         <div className="grid gap-5 md:grid-cols-3">

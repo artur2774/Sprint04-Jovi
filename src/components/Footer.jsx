@@ -48,7 +48,6 @@ export default function Footer() {
 
         <div className="mt-10 flex flex-col gap-3 border-t border-white/15 pt-6 text-xs text-blue-100/80 sm:flex-row sm:justify-between">
           <p>© {new Date().getFullYear()} Jovi Vision.</p>
-          <p>Desenvolvido para Front-end Design e Web Development.</p>
         </div>
       </div>
     </footer>
