@@ -66,7 +66,7 @@ Execute npm run build antes de npm run preview.
 - Mensagens de carregamento, sucesso e erro.
 - Login demonstrativo e painel com rota protegida.
 - Encerramento da sessão.
-- Protótipo interativo inspirado nas telas de câmera e no pitch Jovi.
+- Protótipo interativo inspirado nas telas de câmera.
 - Fluxo demonstrativo em cinco etapas: câmera, detecção de contexto,
   sugestão de pasta, processamento e resultado.
 - Edição da pasta sugerida.
